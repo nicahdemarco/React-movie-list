@@ -15,8 +15,6 @@ export const DiscoverComp = (props: any) => {
 	// 	return `${numberTofix.toFixed(2)}%`;
 	// };
 
-	const filteredList = movieData;
-
 	return props.results === null ? (
 		<div className="d-flex justify-content-center align-items-center bg-primary  text-white discover-comp">
 			<div> Loading...</div>
@@ -26,7 +24,7 @@ export const DiscoverComp = (props: any) => {
 			<h4 className="p-4">Discover</h4>
 			<div className="conatiner">
 				<div className="poster" title="original_title"></div>
-				<h2>{filteredList}</h2>
+				<h2>{movieData}</h2>
 			</div>
 		</div>
 	);
