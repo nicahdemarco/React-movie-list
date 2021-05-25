@@ -8,7 +8,6 @@ import "./discoverComp.css";
 // }
 
 export const DiscoverComp = (props: any) => {
-	// debugger;
 	const movieData = props.results;
 
 	// const toPercentage = (num: number) => {
