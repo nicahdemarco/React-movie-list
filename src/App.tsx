@@ -40,7 +40,7 @@ function App() {
 				<SearchComp />
 			</header>
 			<div className="container">
-				<DiscoverComp props={appState} />
+				<DiscoverComp results = {appState ? appState.results : null} />
 			</div>
 		</div>
 	);

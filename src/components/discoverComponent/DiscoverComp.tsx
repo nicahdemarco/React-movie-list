@@ -1,14 +1,21 @@
 import React from "react";
 import "./discoverComp.css";
 
-// export interface IMovies {
-// 	id: number;
-// 	title: string;
-// 	popularity: number;
-// }
+export interface IMovies {
+	page?:number;
+	results: IMovieCard[];
+}
+export interface IMovieCard {
+	id: number;
+	title: string;
+	popularity: number;
+}
 
-export const DiscoverComp = (props: any) => {
-	const movieData = props.results;
+export const DiscoverComp = (props: IMovies) => {
+	const movieData:IMovies = props.results;
+	console.log(movieData.results);
+
+	
 
 	// const toPercentage = (num: number) => {
 	// 	let numberTofix = (num * 100) / 1000;
@@ -24,7 +31,7 @@ export const DiscoverComp = (props: any) => {
 			<h4 className="p-4">Discover</h4>
 			<div className="conatiner">
 				<div className="poster" title="original_title"></div>
-				<h2>{movieData}</h2>
+				<h2>{movieData.results.map((i)=> i.title) }</h2>
 			</div>
 		</div>
 	);
