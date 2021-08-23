@@ -1,11 +1,22 @@
-/* .discover-comp{
-    margin-top: 10%;
+
+.discover-comp{
+    display: flex;
+    flex-direction: column;
     height: 40vh;
-} */
+    margin-left:20% ;
+    margin-right:20% ;
 
-.poster {
-    background-color: red;
-    height: 200px;
-    width: 50px;
+}
+.title-container{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2%;
+    padding-bottom:2% ;
 
-} 
+}
+.card-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}

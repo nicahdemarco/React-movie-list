@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { DiscoverComp } from "./components/discoverComponent/DiscoverComp";
+import { IMovieCard } from "./components/movieCardComponent/MovieCardComp";
 import { SearchComp } from "./components/searchComponent/SearchComp";
+export interface IMovies {
+	// page?: number;
+	results: IMovieCard[];
+}
 
 function App() {
-	const [appState, setAppState] = useState([]);
+	const [appState, setAppState] = useState<IMovies>();
 
 	const errorParse = (err: Error) => {
 		console.log(`ERROR: ${err.message}`);
@@ -34,13 +39,13 @@ function App() {
 
 	return (
 		<div className="App">
-			<header className="App-header">
+			<header className="App-header fondo">
 				<h1>El mejor recomendador de peliculas y series de la historia</h1>
 				<h3>Lo sabes...</h3>
 				<SearchComp />
 			</header>
 			<div className="container">
-				<DiscoverComp results = {appState ? appState.results : null} />
+				{appState ? <DiscoverComp results={appState.results} /> : <h1>noooo narnia</h1>}
 			</div>
 		</div>
 	);

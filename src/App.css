@@ -12,10 +12,17 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.App-header .fondo{
 
+  background-image: './assets/pexels-lucas-pezeta-2398354.jpg' !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 99;
+}
 .App-header {
   background-color: #282c34;
-  /* min-height: 100vh; */
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
