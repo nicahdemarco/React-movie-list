@@ -23,7 +23,7 @@ export const DiscoverComp = (props: IMovies): JSX.Element => {
 		<div className="d-flex discover-comp bg-primary text-white ">
 			<div className='title-container'>
 				<span className="d-flex ">Popular Movies</span>
-				<span className="d-flex">View All</span>
+				<span className="d-flex ">View All</span>
 			</div>
 			<div className="card-container">
 				{
