@@ -1,10 +1,6 @@
-
-
 .poster {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     background-color: red;
+    padding: 1px;
     height: 200px;
     width: 150px;
 

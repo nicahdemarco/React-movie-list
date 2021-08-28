@@ -3,7 +3,7 @@ import { IMovies } from "../../App";
 import { MovieCardComp, IMovieCard } from "../movieCardComponent/MovieCardComp";
 import "./discoverComp.css";
 
-export const DiscoverComp = (props: IMovies) => {
+export const DiscoverComp = (props: IMovies): JSX.Element => {
 
 	let filteredMovies: IMovieCard[];
 	filteredMovies = props.results.filter((m) => {
@@ -13,6 +13,7 @@ export const DiscoverComp = (props: IMovies) => {
 
 		return filteredMovies;
 	});
+
 
 	return props.results === null ? (
 		<div className="d-flex justify-content-center align-items-center bg-primary  text-white discover-comp">
@@ -24,14 +25,12 @@ export const DiscoverComp = (props: IMovies) => {
 				<span className="d-flex ">Popular Movies</span>
 				<span className="d-flex">View All</span>
 			</div>
-
 			<div className="card-container">
-				<MovieCardComp results={filteredMovies} />
-				<MovieCardComp results={filteredMovies} />
-				<MovieCardComp results={filteredMovies} />
-				<MovieCardComp results={filteredMovies} />
-				<MovieCardComp results={filteredMovies} />
-
+				{
+					filteredMovies.map(() => {
+						return <MovieCardComp results={filteredMovies} />
+					})
+				}
 			</div>
 		</div>
 	);

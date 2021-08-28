@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { DiscoverComp } from "./components/discoverComponent/DiscoverComp";
+import { SearchComp } from "./components/searchComponent";
 import { IMovieCard } from "./components/movieCardComponent/MovieCardComp";
-import { SearchComp } from "./components/searchComponent/SearchComp";
 export interface IMovies {
-	// page?: number;
 	results: IMovieCard[];
 }
 
