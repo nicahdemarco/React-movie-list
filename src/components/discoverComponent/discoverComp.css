@@ -1,22 +1,32 @@
-
-.discover-comp{
+.discover-comp {
     display: flex;
     flex-direction: column;
-    height: 40vh;
-    margin-left:20% ;
-    margin-right:20% ;
-
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 3%;
+    justify-content: center;
 }
-.title-container{
+.title-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 3%;
+}
+
+.title-text {
+    margin-right: 38%;
+}
+
+.card-container {
     display: flex;
     justify-content: space-between;
-    padding-top: 2%;
-    padding-bottom:2% ;
-
 }
-.card-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 
+.title-container > h3 :nth-child(1) {
+    margin-right: 5px;
+}
+.title-container > h5 :nth-child(1) {
+    margin-left: 5px;
+}
+.rated-movies-container{
+    display: none;
 }

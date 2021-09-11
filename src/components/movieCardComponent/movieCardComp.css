@@ -1,7 +1,35 @@
 .poster {
-    background-color: red;
-    padding: 1px;
-    height: 200px;
-    width: 150px;
+    height: 380px;
+    width: 250px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+}
 
-} 
+.poster-data {
+    height: 380px;
+    width: 250px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+}
+
+.poster-data:hover {
+    background-color: rgb(241, 241, 241, 0.8);
+    box-shadow: 10px 10px 1px rgba(27, 29, 29, 0.8);
+}
+
+.poster-data:hover > p {
+    display: flex;
+    padding: 5px;
+
+}
+
+.poster-data > p {
+    display: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(27, 29, 29, 0.8);
+}

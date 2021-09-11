@@ -1,3 +1,30 @@
-.search-comp{
-    margin: 2%;
+.search-comp {
+    display: flex;
+    padding: 8px;
+    width: 30%;
+    background-color: rgb(241, 241, 241);
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 5px 10px 1px rgba(27, 29, 29, 0.8);
+}
+
+input {
+    width: 100%;
+    height: 30px;
+    text-decoration-style: none;
+    background-color: transparent;
+    font-size: 20px;
+    font-style: italic;
+    outline: none;
+    border: none;
+
+}
+
+.search-icon {
+    color: rgba(0, 0, 0, 0.5);
+    margin: 0 10px;
+    font-size: 24px;
+
+
 }

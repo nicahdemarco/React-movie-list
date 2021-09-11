@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { DiscoverComp } from "./components/discoverComponent/DiscoverComp";
+import { DiscoverComp } from "./components/discoverComponent";
+import { IMovieCard } from "./components/movieCardComponent";
 import { SearchComp } from "./components/searchComponent";
-import { IMovieCard } from "./components/movieCardComponent/MovieCardComp";
-export interface IMovies {
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faArrowRight, faFireAlt, faSearch, faStar } from '@fortawesome/free-solid-svg-icons';
+
+library.add(fab, faArrowRight, faFireAlt, faSearch, faStar)
+export interface IRawMovies {
 	results: IMovieCard[];
+	lala?: any
 }
 
 function App() {
-	const [appState, setAppState] = useState<IMovies>();
+	const [appState, setAppState] = useState<IRawMovies>();
 
 	const errorParse = (err: Error) => {
 		console.log(`ERROR: ${err.message}`);
@@ -41,7 +47,10 @@ function App() {
 			<header className="App-header fondo">
 				<h1>El mejor recomendador de peliculas y series de la historia</h1>
 				<h3>Lo sabes...</h3>
-				<SearchComp />
+				<div className="App-logo"></div>
+				<div className="search-container">
+					<SearchComp />
+				</div>
 			</header>
 			<div className="container">
 				{appState ? <DiscoverComp results={appState.results} /> : <h1>noooo narnia</h1>}

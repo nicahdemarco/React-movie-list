@@ -4,7 +4,9 @@
 
 .App-logo {
   /* height: 40vmin; */
-  pointer-events: none;
+  /* width: 40vmin;
+  pointer-events: none; */
+  /* background-image: url('./assets/logo.svg'); */
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -12,14 +14,13 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-.App-header .fondo{
-
-  background-image: './assets/pexels-lucas-pezeta-2398354.jpg' !important;
+.fondo{
+  background-image: url('./assets/pexels-lucas-pezeta-2398354.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  z-index: 99;
 }
+
 .App-header {
   background-color: #282c34;
   min-height: 10vh;
@@ -29,6 +30,15 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.search-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2%;
+  width: 100%;
+
 }
 
 .App-link {

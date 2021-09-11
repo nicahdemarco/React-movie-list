@@ -1,15 +1,16 @@
 import React from "react";
 import "./searchComp.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const SearchComp = ({...props}) => {
+export const SearchComp = ({ ...props }) => {
 	return (
-		<div className="search-comp my-1">
+		<div className="d-flex search-comp">
+			<FontAwesomeIcon className="search-icon" icon="search" />
 			<input
 				type="text"
-				className=" mx-1"
-
+				className="d-flex"
+				placeholder="Search for a movie..."
 			/>
-			<button className="btn btn-primary mx-1">Add</button>
-		</div>
+		</div >
 	);
 };
