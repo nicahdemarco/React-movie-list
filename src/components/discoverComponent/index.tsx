@@ -30,9 +30,12 @@ export const DiscoverComp = ({ results }: IRawMovies): JSX.Element => {
 		<div className="d-flex discover-comp">
 			<div id="lala" className='title-container'>
 				<h3 className="d-flex title-text"> <FontAwesomeIcon icon="fire-alt" />Popular Movies</h3>
-				<RatingFilterComp results={results} lala={ifTrue}></RatingFilterComp>
-			</div>
-			{true &&
+				{/* <div className="rate-comp-container"> */}
+
+					<RatingFilterComp results={results} lala={ifTrue}></RatingFilterComp>
+				</div>
+			{/* </div> */}
+			{/* {true &&
 				<div className='rated-movies-container'>
 					{
 						filteredMovies.map((movie, key) => {
@@ -40,7 +43,7 @@ export const DiscoverComp = ({ results }: IRawMovies): JSX.Element => {
 						})
 					}
 				</div>
-			}
+			} */}
 			<div className='card-container'>
 				{
 					filteredMovies.map((movie, key) => {

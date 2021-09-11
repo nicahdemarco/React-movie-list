@@ -1,76 +1,12 @@
-.rate-comp-container {
-    /* display: flex; */
-    justify-content: flex-start;
-}
-
-.rate-text {
-    position: absolute;
-    display: flex;
-    justify-content: flex-start;
-
-}
 .rate-container {
     display: flex;
-    position: relative;
-    left: 25%;
-    flex-flow: row-reverse;
+    justify-content: flex-end;
     align-items: center;
-
+    flex-grow: 1;
 }
-
-input[name="star"],
-
-.star-wrap:nth-of-type(odd) > .star {
-    transform: translateX(-51.25px);
+.rate-container :nth-child(1) {
+    margin-right: 2%;
 }
-
-.star {
-    cursor: pointer;
-    width: 0;
-    height: 0;
-    border-top: 15px solid transparent;
-    border-right: 11.25px solid transparent;
-    border-bottom: 30px solid #ffac33;
-    border-left: 11.25px solid transparent;
-    margin: -30px 40px 0 40px;
-    transition: filter 0.2s ease-in;
-    filter: grayscale(100%) drop-shadow(1px 0.5px 1px #00000080);
-}
-
-input[name="star"]:checked ~ label.star,
-input[name="star"]:not(:disabled) + label.star:hover,
-input[name="star"]:not(:disabled) + label.star:hover ~ label.star {
-    filter: grayscale(0) drop-shadow(10px 10px 1px #1b1d1dcc);
-}
-
-input[name="star"]:disabled + label.star {
-    cursor: not-allowed;
-}
-
-.star::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    top: -10px;
-    left: -18px;
-    border-top: 40px solid transparent;
-    border-right: 30px solid transparent;
-    border-bottom: 40px solid transparent;
-    border-left: 30px solid #ffac33;
-    transform: rotate(-53.13deg);
-}
-
-.star::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    top: -10px;
-    left: -41px;
-    border-top: 40px solid transparent;
-    border-right: 30px solid #ffac33;
-    border-bottom: 40px solid transparent;
-    border-left: 30px solid transparent;
-    transform: rotate(53.13deg);
+.rate-container :nth-child(2) :hover {
+    filter: grayscale(0) drop-shadow(2px 4px 1px #1b1d1dcc);
 }
