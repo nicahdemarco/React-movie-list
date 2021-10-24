@@ -6,6 +6,7 @@
     height: 380px;
     width: 250px;
     margin: 8px;
+    animation: fade-in  1s ease-in;
 }
 
 .poster-data {
@@ -26,7 +27,6 @@
 .poster-data:hover > p {
     display: flex;
     padding: 5px;
-
 }
 
 .poster-data > p {
@@ -34,4 +34,15 @@
     font-size: 20px;
     font-weight: bold;
     color: rgba(27, 29, 29, 0.8);
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transition: opacity ;
+    }
+    to {
+        opacity: 1;
+        transition: opacity ;
+    }
 }

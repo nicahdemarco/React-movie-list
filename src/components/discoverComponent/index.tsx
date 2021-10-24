@@ -43,22 +43,23 @@ export const DiscoverComp = ({ results }: IRawMovies): JSX.Element => {
 						ratingState !== 0 ?
 							ratedMovies.map((m, key) => {
 								let rate: number = 0;
+
 								if (m.vote_average) {
 
-									if (m.vote_average <= 2) {
-										rate = 2;
-									} else if (m.vote_average <= 4) {
-										rate = 4;
+									if (m.vote_average > 2) {
+										rate = 2;}
+									// } else if (m.vote_average <= 4) {
+									// 	rate = 4;
 
-									} else if (m.vote_average <= 6) {
-										rate = 6;
+									// } else if (m.vote_average <= 6) {
+									// 	rate = 6;
 
-									} else if (m.vote_average <= 8) {
-										rate = 8;
+									// } else if (m.vote_average <= 8) {
+									// 	rate = 8;
 
-									}
+									// }
 								}
-								console.log(m, rate);
+								// console.log(m, rate);
 
 								return rate && rate <= ratingState ? < MovieCardComp results={m} key={key} /> : undefined;
 							}) : undefined

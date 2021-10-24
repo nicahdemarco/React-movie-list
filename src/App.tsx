@@ -11,7 +11,7 @@ library.add(fab, faArrowRight, faFireAlt, faSearch, faStar)
 export interface IRawMovies {
 	results: IMovieCard[];
 	filterAction?: any;
-	ratingState?:any;
+	ratingState?: any;
 }
 
 function App() {
@@ -44,11 +44,10 @@ function App() {
 	}, []);
 
 	return (
-		<div className="App">
-			<header className="App-header fondo">
-				<h1>El mejor recomendador de peliculas y series de la historia</h1>
-				<h3>Lo sabes...</h3>
-				<div className="App-logo"></div>
+		<div>
+			<header className="App-header">
+				<span className="App-logo"></span>
+				<h1>Find, Look, Fun!</h1>
 				<div className="search-container">
 					<SearchComp />
 				</div>
