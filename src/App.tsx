@@ -10,7 +10,8 @@ import { faArrowRight, faFireAlt, faSearch, faStar } from '@fortawesome/free-sol
 library.add(fab, faArrowRight, faFireAlt, faSearch, faStar)
 export interface IRawMovies {
 	results: IMovieCard[];
-	lala?: any
+	filterAction?: any;
+	ratingState?:any;
 }
 
 function App() {

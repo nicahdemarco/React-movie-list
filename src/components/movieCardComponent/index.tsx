@@ -6,6 +6,7 @@ export interface IMovieCard {
 	title: string;
 	popularity: number;
 	poster_path: string;
+	vote_average?: number;
 }
 
 export const MovieCardComp = ({ results }: any): JSX.Element => {
@@ -31,6 +32,7 @@ export const MovieCardComp = ({ results }: any): JSX.Element => {
 						<div className="poster-data">
 							<p >{movies.title}</p>
 							<p>Popularity: {toPercentage(movies.popularity)}</p>
+							<p>Votes: {movies.vote_average}</p>
 						</div>
 					</div>
 				</div>

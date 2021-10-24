@@ -1,22 +1,24 @@
 .poster {
-    height: 380px;
-    width: 250px;
+    display: flex;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
+    height: 380px;
+    width: 250px;
+    margin: 8px;
 }
 
 .poster-data {
-    height: 380px;
-    width: 250px;
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    display: flex;
+    height: 380px;
+    width: 250px;
 }
 
 .poster-data:hover {
+    cursor: pointer;
     background-color: rgb(241, 241, 241, 0.8);
     box-shadow: 10px 10px 1px rgba(27, 29, 29, 0.8);
 }
