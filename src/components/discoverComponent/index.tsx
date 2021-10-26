@@ -4,6 +4,7 @@ import { RatingFilterComp } from "../ratingFilterComponent";
 import { MovieCardComp } from "../movieCardComponent";
 import { IMovieCard } from "../movieCardComponent";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { LoadingComponent } from "../loadingComponent";
 
 import "./discoverComp.css";
 
@@ -25,49 +26,36 @@ export const DiscoverComp = ({ results }: IRawMovies): JSX.Element => {
 	let ratedMovies: IMovieCard[] = results;
 
 	return results === null ? (
-		<div className="d-flex justify-content-center align-items-center discover-comp">
-			<Suspense fallback={<div> Loading...</div>}></Suspense>
+		<div className="discover-comp">
+			<Suspense fallback={<LoadingComponent />}></Suspense>
 
 		</div>
 	) : (
-		<div className="d-flex discover-comp">
+		<div className="discover-comp">
 
 			<div className='title-container'>
-				<h3 className="d-flex title-text"> <FontAwesomeIcon icon="fire-alt" />Popular Movies</h3>
+				<h3> <FontAwesomeIcon icon="fire-alt" />Popular Movies</h3>
 				<RatingFilterComp results={results} filterAction={filterAction} ratingState={ratingState}></RatingFilterComp>
 			</div>
 
-			<Suspense fallback={<div> Filtering Movies...</div>}>
+			<Suspense fallback={<LoadingComponent />}>
 				<div className='card-container'>
 					{
 						ratingState !== 0 ?
-							ratedMovies.map((m, key) => {
-								let rate: number = 0;
+							ratedMovies.map((m) => {
 
-								if (m.vote_average) {
-
-									if (m.vote_average > 2) {
-										rate = 2;}
-									// } else if (m.vote_average <= 4) {
-									// 	rate = 4;
-
-									// } else if (m.vote_average <= 6) {
-									// 	rate = 6;
-
-									// } else if (m.vote_average <= 8) {
-									// 	rate = 8;
-
-									// }
+								const lala = ratingState * 2;
+								if (m.vote_average && m.vote_average <= lala) {
+									return results && < MovieCardComp results={m} key={m.id} />
 								}
-								// console.log(m, rate);
 
-								return rate && rate <= ratingState ? < MovieCardComp results={m} key={key} /> : undefined;
-							}) : undefined
+								return null;
+							}) : null
 					}
 				</div>
 			</Suspense>
 
-			<Suspense fallback={<div> Loading Movies...</div>}>
+			<Suspense fallback={<LoadingComponent />}>
 				<div className='card-container'>
 					{ratingState === 0 ?
 						filteredMovies.map((movie, key) => {

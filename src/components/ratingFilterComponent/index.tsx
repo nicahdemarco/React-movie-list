@@ -19,8 +19,8 @@ export const RatingFilterComp = ({ filterAction, ratingState }: IRawMovies): JSX
 			<h3 className="d-flex rate-text"> Filter by rating</h3>
 			< ReactStars
 				className={'stars-container'}
-				count={5}
-				value={0}
+				count={5 | 0}
+				value={ratingState | 0}
 				size={32}
 				color2={'#ffd700'}
 				half={false}

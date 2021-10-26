@@ -3,6 +3,7 @@ import "./App.css";
 import { DiscoverComp } from "./components/discoverComponent";
 import { IMovieCard } from "./components/movieCardComponent";
 import { SearchComp } from "./components/searchComponent";
+import { LoadingComponent } from "./components/loadingComponent";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faArrowRight, faFireAlt, faSearch, faStar } from '@fortawesome/free-solid-svg-icons';
@@ -25,6 +26,8 @@ function App() {
 	useEffect(() => {
 		const getMoviesByPopularity = (): Promise<void> => {
 			const API_KEY = "66e6c4190fa8095b70e61bda4702a19f";
+			// const API_KEY = "66e6c4190fa8095b70e61bda4702a19f";
+
 			const URL_REQUEST = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
 
 			fetch(URL_REQUEST)
@@ -46,14 +49,13 @@ function App() {
 	return (
 		<div>
 			<header className="App-header">
-				<span className="App-logo"></span>
 				<h1>Find, Look, Fun!</h1>
 				<div className="search-container">
 					<SearchComp />
 				</div>
 			</header>
 			<div className="container">
-				{appState ? <DiscoverComp results={appState.results} /> : <h1>noooo narnia</h1>}
+				{appState ? <DiscoverComp results={appState.results} /> : <LoadingComponent />}
 			</div>
 		</div>
 	);

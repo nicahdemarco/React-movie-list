@@ -1,0 +1,32 @@
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.loading-logo {
+    text-align: center;
+    font-size: 1em;
+    height: 150px;
+    width: 150px;
+    pointer-events: none;
+    background-image: url("../../assets/logo.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .loading-logo {
+        animation: loading-logo-spin infinite 5s linear;
+    }
+}
+
+@keyframes loading-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

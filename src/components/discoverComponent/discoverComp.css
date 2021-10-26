@@ -10,11 +10,7 @@
 .title-container {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 3%;
-}
-
-.title-text {
-    margin-right: 38%;
+    margin-bottom: 2%;
 }
 
 .card-container {
