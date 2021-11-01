@@ -20,7 +20,7 @@ export const RatingFilterComp = ({ filterAction, ratingState }: IRawMovies): JSX
 			< ReactStars
 				className={'stars-container'}
 				count={5 | 0}
-				value={ratingState | 0}
+				value={ratingState ? ratingState : 0}
 				size={32}
 				color2={'#ffd700'}
 				half={false}

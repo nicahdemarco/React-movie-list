@@ -44,8 +44,8 @@ export const DiscoverComp = ({ results }: IRawMovies): JSX.Element => {
 						ratingState !== 0 ?
 							ratedMovies.map((m) => {
 
-								const lala = ratingState * 2;
-								if (m.vote_average && m.vote_average <= lala) {
+								const starsState = ratingState * 2;
+								if (m.vote_average && m.vote_average <= starsState) {
 									return results && < MovieCardComp results={m} key={m.id} />
 								}
 
@@ -61,10 +61,21 @@ export const DiscoverComp = ({ results }: IRawMovies): JSX.Element => {
 						filteredMovies.map((movie, key) => {
 							return <MovieCardComp results={movie} key={key} />
 						})
-						: undefined
+						: null
 					}
 				</div>
 			</Suspense>
+
+			{/* <Suspense fallback={<LoadingComponent />}>
+				<div className='card-container'>
+					{ratingState === 0 ?
+						filteredMovies.map((movie, key) => {
+							return <MovieCardComp results={movie} key={key} />
+						})
+						: null
+					}
+				</div>
+			</Suspense> */}
 		</div >
 	);
 };
