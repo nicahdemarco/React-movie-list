@@ -1,40 +1,44 @@
 import React, { Suspense } from "react";
 import { LoadingComponent } from "../loadingComponent";
-import { IMovieCard } from "../movieCardComponent";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IMovieCard } from "../movieCardComponent";
 
 import "./movieDetailComp.css";
 
-export const MovieDetailComp = ({ modalState, setModalState }: any, results: IMovieCard, poster: string): JSX.Element => {
+interface IMovieDetails extends IMovieCard {
+	overview?: string;
+	release_date?: string;
+}
 
-	const movies: IMovieCard = results;
+
+export const MovieDetailComp = ({ modalState, setModalState, title, overview, getPosterPath, poster_path, release }: { modalState: boolean, setModalState: (bol: boolean) => void, getPosterPath: (str: string) => string, title: string, overview: string, poster_path: string, release: string }): JSX.Element => {
 
 	return modalState === null ? (
+
 		<div className="discover-comp">
 			<Suspense fallback={<LoadingComponent />}></Suspense>
 
 		</div>
 	) : (
 		<div className="modal-wrapper">
-			<div className='modal-container'
-				onBlur={() => setModalState()}
-			>
+			<div className='modal-container'>
 				<button className="modal__close-button "
-					onClick={() => setModalState()}
+					onClick={() => setModalState(false)}
 				>
-					<FontAwesomeIcon className="icon" icon="times" />''
+					<FontAwesomeIcon className="icon" icon="times" />
 				</button>
 				<div className="modal__scroll-area">
 					<header className='modal-header'>
-						<div className="card__background" style={{ backgroundImage: poster }}></div>
+						<div className="card__background" style={{ backgroundImage: getPosterPath(poster_path) }}></div>
 						<h2 className='modal-title'>
-							Title:{movies.title}
+							{title}
 						</h2>
+						<h4>
+							({release.split('',4)})
+						</h4>
 					</header>
 					<main className='modal-body modal__content'>
-
-						<p> {movies.overview} Synopsis: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, quod! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam laudantium fugiat dicta nisi consectetur distinctio, blanditiis saepe cumque tenetur totam eveniet maxime. Laboriosam, eius nam. Ab similique doloribus facere quas. </p>
-
+						<p> {overview} </p>
 					</main>
 				</div>
 			</div>

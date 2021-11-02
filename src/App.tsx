@@ -41,26 +41,30 @@ function App() {
 				});
 			return Promise.resolve();
 		};
-
-		// const searchMovies = (): Promise<void> => {
-		// 	const URL_REQUEST = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false`;
-
-		// 	fetch(URL_REQUEST)
-		// 		.then((movieDbRes: Response) => movieDbRes.json())
-		// 		.then((data) => {
-		// 			if (data) {
-		// 				setSearchState(data);
-		// 			}
-		// 		})
-		// 		.catch((err: Error) => {
-		// 			return errorParse(err);
-		// 		});
-		// 	return Promise.resolve();
-		// };
-
-		// searchMovies();
 		getMoviesByPopularity();
+
 	}, []);
+
+	// useEffect(() => {
+	// 	const searchMovies = (): Promise<void> => {
+	// 		const URL_REQUEST = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false`;
+
+	// 		fetch(URL_REQUEST)
+	// 			.then((movieDbRes: Response) => movieDbRes.json())
+	// 			.then((data) => {
+	// 				if (data) {
+	// 					setSearchState(data);
+	// 				}
+	// 			})
+	// 			.catch((err: Error) => {
+	// 				return errorParse(err);
+	// 			});
+	// 		return Promise.resolve();
+	// 	};
+
+	// 	searchMovies();
+
+	// }, []);
 
 	return (
 		<div className="app-container noise">

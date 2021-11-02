@@ -9,19 +9,20 @@ export interface IMovieCard {
 	poster_path: string;
 	vote_average?: number;
 	overview?: string;
+	release_date?: string;
 }
 
 export const MovieCardComp = ({ results }: any): JSX.Element => {
 
-	const [modalState, setModalState] = useState(false);
+	const [modalState, setModalState] = useState<boolean>(false);
 	const movies: IMovieCard = results;
-	let theMovie: number = 0;
-
+	let id: number = 0;
+	let title: string = '';
+	let overview: string = '';
+	let release: string = '';
 
 	const openCloseModal = () => {
 		setModalState(!modalState);
-		theMovie= movies.id;
-
 	}
 
 	const getPosterPath = (path: string): string => {
@@ -51,9 +52,11 @@ export const MovieCardComp = ({ results }: any): JSX.Element => {
 								<MovieDetailComp
 									modalState={modalState}
 									setModalState={setModalState}
-									results={results}
+									title={movies.title}
 									getPosterPath={getPosterPath}
-									theMovie={theMovie}
+									poster_path={movies.poster_path}
+									overview={movies.overview ? movies.overview : ''}
+									release={movies.release_date ? movies.release_date : ''}
 								/>
 							}
 						</div>
