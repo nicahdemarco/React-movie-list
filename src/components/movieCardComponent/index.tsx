@@ -16,10 +16,6 @@ export const MovieCardComp = ({ results }: any): JSX.Element => {
 
 	const [modalState, setModalState] = useState<boolean>(false);
 	const movies: IMovieCard = results;
-	let id: number = 0;
-	let title: string = '';
-	let overview: string = '';
-	let release: string = '';
 
 	const openCloseModal = () => {
 		setModalState(!modalState);
@@ -36,36 +32,38 @@ export const MovieCardComp = ({ results }: any): JSX.Element => {
 	}
 
 	return (
-		<div className="align-items-center">
-			{
+		<>
+			<div className="align-items-center">
+				{
 
-				<div className="justify-content-space-between movie-container">
-					<div className="poster" style={{ backgroundImage: getPosterPath(movies.poster_path) }}>
-						<div className="poster-data" onClick={() => openCloseModal()}>
-							<p >{movies.title}</p>
-							<p>Popularity: {toPercentage(movies.popularity)}</p>
-							<p>Votes: {movies.vote_average}</p>
+					<div className="justify-content-space-between movie-container">
+						<div className="poster" style={{ backgroundImage: getPosterPath(movies.poster_path) }}>
+							<div className="poster-data" onClick={() => openCloseModal()}>
+								<p >{movies.title}</p>
+								<p>Popularity: {toPercentage(movies.popularity)}</p>
+								<p>Votes: {movies.vote_average}</p>
+							</div>
+
+							<div>
+								{modalState &&
+									<MovieDetailComp
+										modalState={modalState}
+										setModalState={setModalState}
+										title={movies.title}
+										getPosterPath={getPosterPath}
+										poster_path={movies.poster_path}
+										overview={movies.overview ? movies.overview : ''}
+										release={movies.release_date ? movies.release_date : ''}
+									/>
+								}
+							</div>
+
 						</div>
-
-						<div>
-							{modalState &&
-								<MovieDetailComp
-									modalState={modalState}
-									setModalState={setModalState}
-									title={movies.title}
-									getPosterPath={getPosterPath}
-									poster_path={movies.poster_path}
-									overview={movies.overview ? movies.overview : ''}
-									release={movies.release_date ? movies.release_date : ''}
-								/>
-							}
-						</div>
-
 					</div>
-				</div>
 
-			}
-		</div>
+				}
+			</div>
+		</>
 	);
 };
 

@@ -25,6 +25,11 @@ input {
     color: rgba(0, 0, 0, 0.5);
     margin: 0 10px;
     font-size: 24px;
+}
 
-
+.clear-icon {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.5);
+    margin: 0 10px;
+    font-size: 24px;
 }
