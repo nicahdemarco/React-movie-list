@@ -1,28 +1,14 @@
 import React, { useState } from "react";
 import "./searchComp.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IMovieCard } from "../movieCardComponent";
 
-export const SearchComp = ({ results, searchValue, setSearchValueState }: any): JSX.Element => {
-	// const [searchValue, setSearchValueState] = useState<string>('');
-	const [clearValue, setClearValue] = useState<boolean>(false);
+export const SearchComp = ({ searchState, setSearchState }: { searchState: string, setSearchState: React.Dispatch<React.SetStateAction<string>>  }): JSX.Element => {
+	const [inputValue, setInputValue] = useState<string>('');
 
-
-	const movies: IMovieCard = results;
-
-	let handleInputChange = (event: any): void => {
-		if (event && event.key === "Enter") {
-			setClearValue(!!event.target.value)
-			setSearchValueState(event.target.value);
-			console.log(searchValue);
-
-		}
+	let handleInputChange = (): void => {
+		searchState = inputValue
+		setSearchState(searchState);
 	};
-
-	let isClearInput = (e: React.ChangeEvent<HTMLInputElement>): boolean => {
-		setClearValue(!!e.target.value)
-		return e.target.value !== '' ? false : true;
-	}
 
 	return (
 		<>
@@ -32,32 +18,20 @@ export const SearchComp = ({ results, searchValue, setSearchValueState }: any): 
 					name='searchValue'
 					type="text"
 					placeholder="Search for a movie..."
-					value={searchValue}
-					onChange={(e) => { isClearInput(e); setSearchValueState(e.target.value) }}
-					onKeyPress={(e) => e.key === 'Enter' && handleInputChange(e)}
+					value={inputValue}
+					onKeyPress={(e) => e.key === 'Enter' && handleInputChange()}
+					onChange={(e) => { setInputValue(e.target.value) }}
 				/>
 				{
-					clearValue && searchValue !== '' ?
-						<FontAwesomeIcon className="clear-icon" icon="times" onClick={() => {
-							setSearchValueState('')
-						}} />
+					inputValue ?
+						<FontAwesomeIcon
+							className="clear-icon"
+							icon="times"
+							onClick={() => setInputValue('')}
+						/>
 						: null
 				}
 			</div >
-			{
-				searchValue ?
-					<div className="justify-content-space-between movie-container">
-						{/* <div className="poster" style={{ backgroundImage: 'movies' }}>
-
-						</div> */}
-						<div className="poster-data">
-							<p >{movies.title}</p>
-							<p>Popularity: {movies.popularity}</p>
-							<p>Votes: {movies.vote_average}</p>
-						</div>
-					</div>
-					: null
-			}
 		</>
 	);
 };

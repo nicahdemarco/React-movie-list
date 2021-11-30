@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { DiscoverComp } from "./components/discoverComponent";
 import { IMovieCard } from "./components/movieCardComponent";
@@ -17,17 +17,14 @@ export interface IRawMovies {
 
 function App() {
 	const [appState, setAppState] = useState<IRawMovies>();
-	const [searchState, setSearchState] = useState<IRawMovies>();
-	const [searchValue, setSearchValueState] = useState<string>('');
+	const [searchState, setSearchState] = useState<string>('');
 
 	const API_KEY = "66e6c4190fa8095b70e61bda4702a19f";
-	const MOVIE_QUERY = encodeURI(searchValue);
 
 	const errorParse = (err: Error) => {
 		console.log(`ERROR: ${err.message}`);
-		return `<div> Something went wrong, please try again later...</div>`;
+		return `<div> Something went wrong, ${err.message}. Please try again later...</div>`;
 	};
-
 
 	useEffect(() => {
 		const getMoviesByPopularity = (): Promise<void> => {
@@ -49,34 +46,24 @@ function App() {
 		getMoviesByPopularity();
 	}, []);
 
-	const searchMovies = useCallback((): Promise<void> => {
-		const URL_REQUEST = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${MOVIE_QUERY}&language=en-US&page=1&include_adult=false`;
-		debugger
-		fetch(URL_REQUEST)
-			.then((movieDbRes: Response) => movieDbRes.json())
-			.then((data) => {
-				if (data) {
-					console.log(data);
-
-					setSearchState(data);
-				}
-			})
-			.catch((err: Error) => {
-				return errorParse(err);
-			});
-		return Promise.resolve();
-	}, [MOVIE_QUERY]);
-
 	return (
 		<div className="app-container noise">
 			<header className="App-header ">
 				<h1>Find, Look, Fun!</h1>
 				<div className="search-container">
-					{<SearchComp searchMovies={searchMovies} results={searchState?.results} />}
+					{<SearchComp
+						searchState={searchState}
+						setSearchState={setSearchState}
+					/>}
 				</div>
 			</header>
 			<div className="container">
-				{appState ? <DiscoverComp results={appState.results} /> : <LoadingComponent message={'Loading movies'} />}
+				{appState ?
+					<DiscoverComp
+						results={appState.results}
+						searchState={searchState}
+
+					/> : <LoadingComponent message={'Loading movies'} />}
 			</div>
 		</div>
 	);

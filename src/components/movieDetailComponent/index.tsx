@@ -1,14 +1,14 @@
 import React, { Suspense } from "react";
 import { LoadingComponent } from "../loadingComponent";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IMovieCard } from "../movieCardComponent";
+// import { IMovieCard } from "../movieCardComponent";
 
 import "./movieDetailComp.css";
 
-interface IMovieDetails extends IMovieCard {
-	overview?: string;
-	release_date?: string;
-}
+// interface IMovieDetails extends IMovieCard {
+// 	overview?: string;
+// 	release_date?: string;
+// }
 
 export const MovieDetailComp = ({ 
 									modalState,
