@@ -1,5 +1,5 @@
 .app-container {
-
+  min-height: 100vh;
   background: linear-gradient(195deg,#faeadb 0%, #faeadb 20%);
   background: -webkit-linear-gradient(195deg,#faeadb 0%, #faeadb 20%);
   background: -moz-linear-gradient(195deg,#faeadb 0%, #faeadb 20%);  

@@ -16,6 +16,7 @@ export const MovieCardComp = ({ results }: any): JSX.Element => {
 
 	const [modalState, setModalState] = useState<boolean>(false);
 	const movies: IMovieCard = results;
+	const isPosterFound: boolean = !!movies.poster_path;
 
 	const openCloseModal = () => {
 		setModalState(!modalState);
@@ -23,8 +24,17 @@ export const MovieCardComp = ({ results }: any): JSX.Element => {
 
 	const getPosterPath = (path: string): string => {
 		const URL = 'https://image.tmdb.org/t/p/w500';
-		return `url(${URL}${path})`
+		let fullURL = ''
+
+		if (path !== null) {
+			fullURL = `url(${URL}${path})`
+		}
+		return fullURL;
 	};
+
+	const setBackgroundClassName = (): string => {
+		return !isPosterFound ? 'poster poster-not-found' : 'poster';
+	}
 
 	const toPercentage = (num: number): string => {
 		let numberTofix = ((num * 10) / 1000);
@@ -37,7 +47,7 @@ export const MovieCardComp = ({ results }: any): JSX.Element => {
 				{
 
 					<div className="justify-content-space-between movie-container">
-						<div className="poster" style={{ backgroundImage: getPosterPath(movies.poster_path) }}>
+						<div className={setBackgroundClassName()} style={{ backgroundImage: getPosterPath(movies.poster_path) }}>
 							<div className="poster-data" onClick={() => openCloseModal()}>
 								<p >{movies.title}</p>
 								<p>Popularity: {toPercentage(movies.popularity)}</p>

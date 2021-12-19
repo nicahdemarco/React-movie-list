@@ -38,6 +38,8 @@ function App() {
 					}
 				})
 				.catch((err: Error) => {
+					console.log(err);
+					
 					return errorParse(err);
 				});
 			return Promise.resolve();

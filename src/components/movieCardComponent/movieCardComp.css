@@ -1,13 +1,17 @@
 .poster {
     display: flex;
-    background-color: rgb(95, 95, 95);;
+    background-color: rgb(95, 95, 95);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 380px;
     width: 250px;
     margin: 8px;
-    animation: fade-in  1s ease-in;
+    animation: fade-in 1s ease-in;
+}
+
+.poster-not-found {
+    background-image: url("../../assets/no-poster.png");
 }
 
 .poster-data {
@@ -41,10 +45,10 @@
 @keyframes fade-in {
     from {
         opacity: 0;
-        transition: opacity ;
+        transition: opacity;
     }
     to {
         opacity: 1;
-        transition: opacity ;
+        transition: opacity;
     }
 }
