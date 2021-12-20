@@ -62,12 +62,11 @@ export const MovieCardComp = ({ results }: any): JSX.Element => {
 										title={movies.title}
 										getPosterPath={getPosterPath}
 										poster_path={movies.poster_path}
-										overview={movies.overview ? movies.overview : ''}
-										release={movies.release_date ? movies.release_date : ''}
+										overview={movies.overview ? movies.overview : 'No overview for this title'}
+										release={movies.release_date ? movies.release_date : 'No date for this title'}
 									/>
 								}
 							</div>
-
 						</div>
 					</div>
 

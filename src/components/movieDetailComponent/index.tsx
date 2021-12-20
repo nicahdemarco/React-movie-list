@@ -28,6 +28,11 @@ export const MovieDetailComp = ({
 									release: string
 								}): JSX.Element => {
 
+const setBackgroundClassName = (): string => {
+	return !poster_path ? 'card__background poster-not-found' : 'card__background';
+}
+								
+
 	return modalState === null ? (
 		<>
 			<div className="discover-comp">
@@ -45,9 +50,9 @@ export const MovieDetailComp = ({
 					</button>
 					<div className="modal__scroll-area">
 						<header className='modal-header'>
-							<div className="card__background" style={{ backgroundImage: getPosterPath(poster_path) }}></div>
+							<div className={setBackgroundClassName()} style={{ backgroundImage: getPosterPath(poster_path) }}></div>
 							<h2 className='modal-title'>
-								{title}
+								{title }
 							</h2>
 							<h4>
 								({release.split('', 4)})

@@ -25,7 +25,6 @@ function App() {
 		console.log(`ERROR: ${err.message}`);
 		return `<div> Something went wrong, ${err.message}. Please try again later...</div>`;
 	};
-
 	useEffect(() => {
 		const getMoviesByPopularity = (): Promise<void> => {
 			const URL_REQUEST = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
@@ -38,8 +37,6 @@ function App() {
 					}
 				})
 				.catch((err: Error) => {
-					console.log(err);
-					
 					return errorParse(err);
 				});
 			return Promise.resolve();
@@ -64,7 +61,6 @@ function App() {
 					<DiscoverComp
 						results={appState.results}
 						searchState={searchState}
-
 					/> : <LoadingComponent message={'Loading movies'} />}
 			</div>
 		</div>

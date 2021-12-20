@@ -23,15 +23,17 @@
     bottom: 0;
     left: 0;
     overflow: hidden;
-    background-image: url("../../assets/no-poster.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+
     height: 380px;
     z-index: -1;
     text-align: left;
 }
-
+.card__background.poster-not-found{
+    background-image: url("../../assets/no-poster.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .card__background::after {
     content: "";
     position: absolute;

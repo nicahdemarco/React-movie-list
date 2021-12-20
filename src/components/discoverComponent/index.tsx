@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { LoadingComponent } from "../loadingComponent";
 import "./discoverComp.css";
 
-export const DiscoverComp = ({ results, searchState }: { results: IMovieCard[], searchState: string }): JSX.Element => {
+export const DiscoverComp = ({ results, searchState }: { results: IMovieCard[], searchState: string, }): JSX.Element => {
 	const [ratingState, setRatingState] = useState<number>(0);
 	const [searchResponseValue, setSearchResponseState] = useState<any>();
 
@@ -44,6 +44,7 @@ export const DiscoverComp = ({ results, searchState }: { results: IMovieCard[], 
 				return errorParse(err);
 			});
 	}
+
 	useEffect(() => {
 		if (MOVIE_QUERY) {
 			getMovie();
@@ -62,9 +63,15 @@ export const DiscoverComp = ({ results, searchState }: { results: IMovieCard[], 
 		<>
 			<div className="discover-comp">
 
-				<div className='title-container'>
-					<h3> <FontAwesomeIcon icon="fire-alt" />Popular Movies</h3>
-					<RatingFilterComp results={results} filterAction={filterAction} ratingState={ratingState}></RatingFilterComp>
+				<div className='title-container' >
+					<h3 className='title'
+						onClick={() => getMovie}>
+						<FontAwesomeIcon icon="fire-alt" />Popular Movies</h3>
+					<RatingFilterComp
+						results={results}
+						filterAction={filterAction}
+						ratingState={ratingState}
+					/>
 				</div>
 
 				<Suspense fallback={<LoadingComponent message={'Loading movies'} />}>
