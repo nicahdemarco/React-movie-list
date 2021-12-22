@@ -4,6 +4,8 @@ import { MovieCardComp } from "../movieCardComponent";
 import { IMovieCard } from "../movieCardComponent";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { LoadingComponent } from "../loadingComponent";
+import { getUserInput } from '../../fetchService/fetchService';
+
 import "./discoverComp.css";
 
 export const DiscoverComp = ({ results, searchState }: { results: IMovieCard[], searchState: string, }): JSX.Element => {
@@ -32,24 +34,18 @@ export const DiscoverComp = ({ results, searchState }: { results: IMovieCard[], 
 		return `<div> Something went wrong, ${err.message}. Please try again later...</div>`;
 	};
 
-	const getMovie = (): Promise<any> => {
-		const URL_REQUEST = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${MOVIE_QUERY}&language=en-US&page=1&include_adult=false`;
-
-		return fetch(URL_REQUEST)
-			.then((movieDbRes: Response) => movieDbRes.json())
-			.then((data) => {
-				setSearchResponseState(data);
-			})
-			.catch((err: Error) => {
-				return errorParse(err);
-			});
-	}
+	const getUserSearchMovie: Promise<any> = getUserInput(API_KEY, MOVIE_QUERY)
+		.then((movieDbRes: Response) => movieDbRes.json())
+		.then((data) => {
+			setSearchResponseState(data);
+		})
+		.catch((err: Error) => {
+			return errorParse(err);
+		});
 
 	useEffect(() => {
-		if (MOVIE_QUERY) {
-			getMovie();
-		}
-	}, [MOVIE_QUERY])
+		getUserSearchMovie.then(() => Promise.resolve());
+	}, [getUserSearchMovie])
 
 
 	return results === null ? (
@@ -65,7 +61,7 @@ export const DiscoverComp = ({ results, searchState }: { results: IMovieCard[], 
 
 				<div className='title-container' >
 					<h3 className='title'
-						onClick={() => getMovie}>
+						onClick={() => getUserSearchMovie}>
 						<FontAwesomeIcon icon="fire-alt" />Popular Movies</h3>
 					<RatingFilterComp
 						results={results}

@@ -7,6 +7,7 @@ import { LoadingComponent } from "./components/loadingComponent";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faArrowRight, faFireAlt, faSearch, faStar, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { getMovies } from './fetchService/fetchService';
 
 library.add(fab, faArrowRight, faFireAlt, faSearch, faStar, faTimes)
 export interface IRawMovies {
@@ -25,25 +26,21 @@ function App() {
 		console.log(`ERROR: ${err.message}`);
 		return `<div> Something went wrong, ${err.message}. Please try again later...</div>`;
 	};
+
+	const getMoviesByPopularity: Promise<string | void> = getMovies(API_KEY)
+		.then((data) => {
+			if (data) {
+				setAppState(data);
+			}
+		})
+		.catch((err: Error) => {
+			return errorParse(err);
+		});
+
 	useEffect(() => {
-		const getMoviesByPopularity = (): Promise<void> => {
-			const URL_REQUEST = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
+		getMoviesByPopularity.then(()=> Promise.resolve())
 
-			fetch(URL_REQUEST)
-				.then((movieDbRes: Response) => movieDbRes.json())
-				.then((data) => {
-					if (data) {
-						setAppState(data);
-					}
-				})
-				.catch((err: Error) => {
-					return errorParse(err);
-				});
-			return Promise.resolve();
-		};
-
-		getMoviesByPopularity();
-	}, []);
+	}, [getMoviesByPopularity]);
 
 	return (
 		<div className="app-container noise">

@@ -6,7 +6,6 @@
 }
 .stars-container{
     height: 50px;
-    width: 140px;
 }
 .stars-container > span {
     filter: grayscale(0) drop-shadow( 5px 10px 1px rgba(27, 29, 29, 0.5));
