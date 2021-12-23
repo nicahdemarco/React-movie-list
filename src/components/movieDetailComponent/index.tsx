@@ -10,28 +10,28 @@ import "./movieDetailComp.css";
 // 	release_date?: string;
 // }
 
-export const MovieDetailComp = ({ 
-									modalState,
-									setModalState,
-									title,
-									overview,
-									getPosterPath,
-									poster_path,
-									release
-								} : {
-									modalState: boolean,
-									setModalState: (bol: boolean) => void,
-									getPosterPath: (str: string) => string,
-									title: string,
-									overview: string,
-									poster_path: string,
-									release: string
-								}): JSX.Element => {
+export const MovieDetailComp = ({
+	modalState,
+	setModalState,
+	title,
+	overview,
+	getPosterPath,
+	poster_path,
+	release
+}: {
+	modalState: boolean,
+	setModalState: (bol: boolean) => void,
+	getPosterPath: (str: string) => string,
+	title: string,
+	overview: string,
+	poster_path: string,
+	release: string
+}): JSX.Element => {
 
-const setBackgroundClassName = (): string => {
-	return !poster_path ? 'card__background poster-not-found' : 'card__background';
-}
-								
+	const setBackgroundClassName = (): string => {
+		return !poster_path ? 'card__background poster-not-found' : 'card__background';
+	}
+
 
 	return modalState === null ? (
 		<>
@@ -52,7 +52,7 @@ const setBackgroundClassName = (): string => {
 						<header className='modal-header'>
 							<div className={setBackgroundClassName()} style={{ backgroundImage: getPosterPath(poster_path) }}></div>
 							<h2 className='modal-title'>
-								{title }
+								{title}
 							</h2>
 							<h4>
 								({release.split('', 4)})

@@ -30,7 +30,7 @@
 .card-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 }
 
 .title-container > h3 :nth-child(1) {

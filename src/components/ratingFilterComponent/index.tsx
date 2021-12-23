@@ -1,9 +1,9 @@
 import React from "react";
-import { IRawMovies } from "../../App";
 import ReactStars from 'react-stars'
+import { IMovieCard } from "../movieCardComponent";
 import "./ratingFilterComp.css";
 
-export const RatingFilterComp = ({ filterAction, ratingState }: IRawMovies): JSX.Element => {
+export const RatingFilterComp = ({ movieResults, filterAction, ratingState }: { movieResults: IMovieCard[], filterAction: (n: number) => void, ratingState: number }): JSX.Element => {
 
 	const ratingChanged = (newRating: number) => {
 		if (ratingState === newRating) {

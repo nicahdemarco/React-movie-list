@@ -12,10 +12,10 @@ export interface IMovieCard {
 	release_date?: string;
 }
 
-export const MovieCardComp = ({ results }: any): JSX.Element => {
+export const MovieCardComp = ({ ...movieResults }: IMovieCard): JSX.Element => {
 
 	const [modalState, setModalState] = useState<boolean>(false);
-	const movies: IMovieCard = results;
+	const movies = movieResults;
 	const isPosterFound: boolean = !!movies.poster_path;
 
 	const openCloseModal = () => {
@@ -26,9 +26,8 @@ export const MovieCardComp = ({ results }: any): JSX.Element => {
 		const URL = 'https://image.tmdb.org/t/p/w500';
 		let fullURL = ''
 
-		if (path !== null) {
-			fullURL = `url(${URL}${path})`
-		}
+		if (path !== null) fullURL = `url(${URL}${path})`
+
 		return fullURL;
 	};
 
@@ -38,6 +37,7 @@ export const MovieCardComp = ({ results }: any): JSX.Element => {
 
 	const toPercentage = (num: number): string => {
 		let numberTofix = ((num * 10) / 1000);
+
 		return `${numberTofix.toFixed(1)}%`;
 	}
 
