@@ -10,7 +10,7 @@ export const getMovies = (API_KEY: string): Promise<IRawMovies> => {
         });
 };
 
-export const getUserInput = (API_KEY: string, ENCODED_QUERY: string): Promise<any> => {
+export const getUserInput = (API_KEY: string, ENCODED_QUERY: string): Promise<IRawMovies> => {
     const URL_REQUEST = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${ENCODED_QUERY}&language=en-US&page=1&include_adult=false`;
 
     return fetch(URL_REQUEST)

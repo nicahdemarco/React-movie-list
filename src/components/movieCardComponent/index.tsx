@@ -12,10 +12,11 @@ export interface IMovieCard {
 	release_date?: string;
 }
 
-export const MovieCardComp = ({ ...movieResults }: IMovieCard): JSX.Element => {
+type MovieCardType = { movie: IMovieCard, searchResponseState?: IMovieCard[] }
 
+export const MovieCardComp = ({ movie }: MovieCardType): JSX.Element => {
 	const [modalState, setModalState] = useState<boolean>(false);
-	const movies = movieResults;
+	const movies = movie;
 	const isPosterFound: boolean = !!movies.poster_path;
 
 	const openCloseModal = () => {
@@ -75,4 +76,3 @@ export const MovieCardComp = ({ ...movieResults }: IMovieCard): JSX.Element => {
 		</>
 	);
 };
-

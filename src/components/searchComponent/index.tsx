@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import "./searchComp.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getUserInput } from '../../fetchService/fetchService';
-// { searchState, setSearchState }: { searchState: string, setSearchState: React.Dispatch<React.SetStateAction<string>>}
+import { IMovieCard } from "../movieCardComponent";
 
-export const SearchComp = ({ searchState, setSearchState }: { searchState: string, setSearchState: React.Dispatch<React.SetStateAction<string>>}): JSX.Element => {
+type SearchCompType = { setSearchResponseState: (param: IMovieCard[]) => void };
+
+export const SearchComp = ({ setSearchResponseState }: SearchCompType): JSX.Element => {
 	const [inputValue, setInputValue] = useState<string>('');
 
 	const API_KEY = "66e6c4190fa8095b70e61bda4702a19f";
@@ -12,12 +14,12 @@ export const SearchComp = ({ searchState, setSearchState }: { searchState: strin
 
 	const errorParse = (err: Error) => {
 		console.log(`ERROR: ${err.message}`);
-		return `<div> Something went wrong, ${err.message}. Please try again later...</div>`;
+		return <div> Something went wrong, ${err.message}. Please try again later...</div>;
 	};
 
 	let handleInputChange = (): void => {
 		getUserInput(API_KEY, MOVIE_QUERY)
-			.then((data) => setInputValue(data))
+			.then((response) => setSearchResponseState(response.results))
 			.catch((err) => errorParse(err));
 	};
 
@@ -47,5 +49,3 @@ export const SearchComp = ({ searchState, setSearchState }: { searchState: strin
 		</>
 	);
 };
-
-

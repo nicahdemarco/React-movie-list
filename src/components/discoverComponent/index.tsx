@@ -4,16 +4,14 @@ import { MovieCardComp } from "../movieCardComponent";
 import { IMovieCard } from "../movieCardComponent";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { LoadingComponent } from "../loadingComponent";
-// import { getUserInput } from '../../fetchService/fetchService';
-
 import "./discoverComp.css";
 
-export const DiscoverComp = ({ movieResults }: { movieResults: IMovieCard[] }): JSX.Element => {
+export const DiscoverComp = ({ movieResults, searchResponseState }: { movieResults: IMovieCard[], searchResponseState: IMovieCard[] }): JSX.Element => {
 	const [ratingState, setRatingState] = useState<number>(0);
 
 	let filteredMovies: IMovieCard[];
 
-	filteredMovies = movieResults.filter((movie: IMovieCard) => {
+	filteredMovies = movieResults && movieResults.filter((movie: IMovieCard) => {
 		if (movieResults.indexOf(movie) < 5) {
 			return movie;
 		}
@@ -37,7 +35,7 @@ export const DiscoverComp = ({ movieResults }: { movieResults: IMovieCard[] }): 
 
 				<div className='title-container' >
 					<h3 className='title'
-					// onClick={() => getUserInput(API_KEY, MOVIE_QUERY)
+					// onClick={() => getMovies(API_KEY)}
 					>
 						<FontAwesomeIcon icon="fire-alt" />Popular Movies</h3>
 					<RatingFilterComp
@@ -47,15 +45,19 @@ export const DiscoverComp = ({ movieResults }: { movieResults: IMovieCard[] }): 
 					/>
 				</div>
 
+				{/* Filter by rating list */}
 				<Suspense fallback={<LoadingComponent message={'Loading movies'} />}>
 					<div className='card-container'>
 						{
 							ratingState !== 0 ?
-								movieResults.map((movie, key) => {
+								movieResults.map((movieItem, key) => {
 									const starsState = ratingState * 2;
 
-									if (movie.vote_average && movie.vote_average <= starsState) {
-										return < MovieCardComp movieResults={movie} key={key} />
+									if (movieItem.vote_average && movieItem.vote_average <= starsState) {
+										return < MovieCardComp
+											movie={movieItem}
+											key={key}
+										/>
 									}
 
 									return null;
@@ -65,28 +67,31 @@ export const DiscoverComp = ({ movieResults }: { movieResults: IMovieCard[] }): 
 					</div>
 				</Suspense>
 
+				{/* Popular movie list */}
 				<Suspense fallback={<LoadingComponent message={'Loading movies'} />}>
 					<div className='card-container'>
-						{ratingState === 0 ?
-							filteredMovies.map((movie, key) => {
-								return <MovieCardComp movieResults={movie} key={key} />
-							})
-							: null
+						{
+							ratingState === 0 && !searchResponseState.length ?
+								filteredMovies && filteredMovies.map((movie, key) => {
+									return <MovieCardComp movie={movie} key={key} />
+								})
+								: null
 						}
 					</div>
 				</Suspense>
 
-				{/* <Suspense fallback={<LoadingComponent message={'searching movies'} />}>
+				{/* Search result movie list */}
+				<Suspense fallback={<LoadingComponent message={'searching movies'} />}>
 					<div className='card-container'>
 						{
-							// searchResponseValue !== undefined ?
-							searchResponseValue.movieResults.map((movie: any, key: any) => {
-								return <MovieCardComp movieResults={movie} key={key} />
-							})
-							// : ''
+							searchResponseState.length > 0 ?
+								searchResponseState.map((movie: any, key: any) => {
+									return <MovieCardComp movie={movie} key={key} />
+								})
+								: ''
 						}
 					</div>
-				</Suspense> */}
+				</Suspense>
 			</div >
 		</>
 	);
