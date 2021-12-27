@@ -68,5 +68,8 @@
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.9",
     "@types/react-stars": "^2.2.1"
+  },
+  "optionalDependencies": {
+    "babel-loader": "8.1.0"
   }
 }
