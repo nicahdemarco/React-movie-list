@@ -30,13 +30,13 @@ function App() {
 	useEffect(() => {
 		!appState && getMovies(API_KEY)
 			.then((data) => setAppState(data))
-			
+
 			.catch((err) => errorParse(err));
-	}, [] );
+	}, []);
 
 	return (
 		<div className="app-container noise">
-			<header className="App-header ">
+			<header className="App-header " >
 				<h1> Find, Look, Fun! </h1>
 				<div className="search-container">
 					<SearchComp
