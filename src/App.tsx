@@ -30,8 +30,9 @@ function App() {
 	useEffect(() => {
 		!appState && getMovies(API_KEY)
 			.then((data) => setAppState(data))
+			
 			.catch((err) => errorParse(err));
-	}, []);
+	}, [] );
 
 	return (
 		<div className="app-container noise">
